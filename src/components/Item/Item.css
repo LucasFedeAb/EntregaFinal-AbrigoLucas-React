@@ -1,0 +1,16 @@
+/* .item {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+} */
+
+.img {
+  width: 186px;
+  height: 300px;
+
+  /* width: 200px;
+  height: 250px; */
+  /* margin-left: 80px; */
+}

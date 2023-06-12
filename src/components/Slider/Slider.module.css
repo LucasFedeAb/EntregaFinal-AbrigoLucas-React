@@ -1,0 +1,42 @@
+.sliderCustom {
+  width: 250px;
+  height: 500px;
+  border-radius: 1000px;
+  cursor: pointer;
+}
+
+.img {
+  width: max-content;
+  height: 249px;
+  /* border-radius: 1000px; */
+}
+
+/* .carouselControls {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  padding: 10px;
+} */
+
+/* .controls {
+  top: initial;
+  bottom: 50%;
+  transform: translateY(50%);
+} */
+
+/* .carousel-control-prev,
+.carousel-control-next {
+  top: 50%;
+  transform: translateY(-50%);
+  bottom: initial;
+  color: black;
+}
+
+.carousel-control-next {
+  top: initial;
+  bottom: 50%;
+  transform: translateY(50%);
+} */
