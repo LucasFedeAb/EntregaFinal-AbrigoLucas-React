@@ -80,7 +80,9 @@ const Navbar = () => {
             </div>
           </div>
           <div className={`d-flex `}>
-            <CartWidget count={0} />
+            <Link to={"/cart"}>
+              <CartWidget />
+            </Link>
 
             <button
               className="navbar-toggler ms-3 "

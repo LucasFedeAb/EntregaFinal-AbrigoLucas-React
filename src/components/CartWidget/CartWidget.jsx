@@ -1,13 +1,22 @@
 import cart from "./assets/bag-fill.svg";
+import { useCart } from "../../Hooks/useCart";
 
-const CartWidget = ({ count }) => {
+const CartWidget = () => {
+  const { totalQuantity } = useCart();
+
   return (
     <div>
-      <button
-        className={`btn btn-outline-dark d-flex h-75 col-lg-h-100 ps-3 pe-3 me-1 justify-content-center align-items-center rounded `}
-      >
-        <p className={`badge bg-dark text-light mt-1 `}>{count}</p>
-        <img className="mt-3 me-1" src={cart} alt="cart" />
+      <button className="btn position-relative  me-2">
+        <img
+          className="position-absolute top-0 start-0 ps-1"
+          src={cart}
+          alt="cart"
+        />
+        {totalQuantity > 0 && (
+          <span className="position-absolute top-0 start-0 translate-middle badge border border-dark rounded-pill bg-danger">
+            {totalQuantity}
+          </span>
+        )}
       </button>
     </div>
   );

@@ -6,10 +6,12 @@
   align-items: center;
 } */
 
-.img {
-  width: 186px;
-  height: 300px;
+.card:hover {
+  box-shadow: 0 12px 32px #3333331a;
+}
 
+.img-height {
+  height: 214px !important;
   /* width: 200px;
   height: 250px; */
   /* margin-left: 80px; */

@@ -13,21 +13,15 @@ const ItemCount = ({ stock, onAdd }) => {
   };
 
   return (
-    <div className="me-5">
-      <h5 className="ms-3">{count}</h5>
-
-      <div className="">
+    <div className="me-5 justify-content-between align-items-center">
+      <div className="d-flex mb-2 ">
         <ButtonCard
           label="-"
           colorHover="dark"
           font="bold"
           onClick={decrement}
         />
-        <ButtonCard
-          label="Agregar al carrito"
-          colorHover="success"
-          onClick={() => onAdd(count)}
-        />
+        <h5 className=" ps-2 pt-2 pe-2">{count}</h5>
         <ButtonCard
           label="+"
           colorHover="dark"
@@ -35,6 +29,11 @@ const ItemCount = ({ stock, onAdd }) => {
           onClick={increment}
         />
       </div>
+      <ButtonCard
+        label="Agregar al carrito"
+        colorHover="success"
+        onClick={() => onAdd(count)}
+      />
     </div>
   );
 };

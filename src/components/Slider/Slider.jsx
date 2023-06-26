@@ -19,9 +19,7 @@ const SliderHero = ({ images }) => {
               className={`d-block w-100 rounded-pill rounded-bottom-0 p-5  bg-dark  ${Slider.img}`}
               alt={`HERO${index}`}
             />
-            <div className="d-flex justify-content-center text-warning border-bottom border-secondary border-1 pb-2">
-              <StarWidget />
-            </div>
+            <div className="border-bottom border-secondary border-1 pb-2"></div>
             <img
               src={
                 index === images.length - 1

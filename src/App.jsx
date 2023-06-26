@@ -4,20 +4,28 @@ import ItemListContainer from "./components/ItemListContainer/ItemListContainer.
 import Footer from "./components/Footer/Footer.jsx";
 import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer.jsx";
 import "./App.css";
+import { CartProvider } from "./context/CartContext.jsx";
+import CartContainer from "./components/CartContainer/CartContainer.jsx";
 
 function App() {
   return (
     <>
       <BrowserRouter>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<ItemListContainer title={`CATÁLOGO`} />} />
-          <Route
-            path="/category/:categoryId"
-            element={<ItemListContainer title={`CATEGORIA:`} />}
-          />
-          <Route path="/Producto/:itemId" element={<ItemDetailContainer />} />
-        </Routes>
+        <CartProvider>
+          <Navbar />
+          <Routes>
+            <Route
+              path="/"
+              element={<ItemListContainer title={`CATÁLOGO`} />}
+            />
+            <Route
+              path="/category/:categoryId"
+              element={<ItemListContainer title={``} />}
+            />
+            <Route path="/Producto/:itemId" element={<ItemDetailContainer />} />
+            <Route path="/cart" element={<CartContainer />} />
+          </Routes>
+        </CartProvider>
         <Footer />
       </BrowserRouter>
     </>

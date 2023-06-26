@@ -1,18 +1,37 @@
 import { useState } from "react";
 import ItemCount from "../ItemCount/ItemCount";
-
+import { useCart } from "../../Hooks/useCart";
 import ButtonCard from "../Buttons/ButtonCard";
+/* import CartContainer from "../CartContainer/CartContainer"; */
+import { Link } from "react-router-dom";
 
 const ItemDetail = ({ id, img, name, category, price, description, stock }) => {
   const [quantity, setQuantity] = useState(0);
+  const [showCartInfo, setShowCartInfo] = useState(false);
+  const { addItem } = useCart();
 
   const handleOnAdd = (quantity) => {
     setQuantity(quantity);
+
+    const objProduct = {
+      id,
+      name,
+      price,
+      img,
+      category,
+      quantity,
+    };
+
+    addItem(objProduct);
+  };
+
+  const handleCart = () => {
+    setShowCartInfo(true);
   };
 
   return (
-    <section className="py-5 container-fluid vh-100">
-      <div className="container px-4 px-lg-5 my-5">
+    <section className="py-5 mb-5 container-fluid">
+      <div className="container-fluid px-4 px-lg-5 my-5">
         <div className="row gx-4 gx-lg-5 align-items-center">
           <div className="col-md-6">
             <img
@@ -32,7 +51,7 @@ const ItemDetail = ({ id, img, name, category, price, description, stock }) => {
             </div>
             <h1>{name}</h1>
             <p className="lead">{description}</p>
-            <div className="d-flex">
+            <div className="d-flex position-absolute">
               {quantity == 0 ? (
                 stock > 0 ? (
                   <ItemCount stock={stock} onAdd={handleOnAdd} />
@@ -40,17 +59,24 @@ const ItemDetail = ({ id, img, name, category, price, description, stock }) => {
                   <p className="fw-bold text-danger"> SIN STOCK DISPONIBLE</p>
                 )
               ) : (
-                <ButtonCard
-                  label="Finalizar compra"
-                  textColor="light"
-                  bg="success"
-                />
+                <Link to={"/cart"}>
+                  <ButtonCard
+                    label="Finalizar compra"
+                    textColor="light"
+                    bg="success"
+                    onClick={handleCart}
+                  />
+                </Link>
               )}
             </div>
           </div>
         </div>
       </div>
-      {/* <RelatedProducts /> */}
+      {/* {showCartInfo && ( // Bloque condicional para mostrar la información del carrito
+        <div>
+          <CartContainer />
+        </div>
+      )} */}
     </section>
   );
 };

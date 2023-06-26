@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const Item = ({ category, id, img, name, price }) => {
   return (
     <div className="col mb-5 ">
-      <div className="card h-100 ">
+      <div className="card ">
         <div
           className="badge bg-dark text-white position-absolute"
           style={{ top: "0.5rem", right: "0.5rem" }}
@@ -14,7 +14,7 @@ const Item = ({ category, id, img, name, price }) => {
           {/* Sale */}
         </div>
         <img
-          className="card-img-top justify-content-center img p-5"
+          className="card-img-top justify-content-center p-5 img-height"
           src={img}
           alt={`${{ name }}`}
         />
