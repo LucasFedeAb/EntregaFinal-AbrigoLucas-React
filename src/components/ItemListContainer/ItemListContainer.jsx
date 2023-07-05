@@ -1,50 +1,52 @@
-import { getProducts, getProductByCategory } from "../AsyncMock/asyncMock.js";
-import { useAsync } from "../../Hooks/useAsync";
+/* import { useState, useEffect } from "react"; */
 import { useParams } from "react-router-dom";
-import Hero from "../Hero/HeroContainer.jsx";
+import PageTitle from "../PageTitle/PageTitle.jsx";
+import Hero from "../Hero/Hero.jsx";
 import ItemList from "../ItemList/ItemList.jsx";
 import Loading from "../Loading/Loading";
 import "./ItemListContainer.css";
 
+import { useAsync } from "../../Hooks/useAsync.js";
+import { getProducts } from "../../../services/firebase/firebase/products.js";
+
 const ItemListContainer = ({ title }) => {
   const { categoryId } = useParams();
 
-  let filter = false;
+  const getProductsWithCategory = () => getProducts(categoryId);
+  /* const [images, setImages] = useState([]); */
 
-  const getFunction = categoryId
-    ? (() => {
-        filter = true;
-        return getProductByCategory;
-      })()
-    : getProducts;
+  const {
+    data: products,
+    error,
+    loading,
+  } = useAsync(getProductsWithCategory, [categoryId]);
 
-  const { data: products, loading } = useAsync(
-    () => getFunction(categoryId),
-    [categoryId, filter]
-  );
+  if (error) {
+    return <h1>Hubo un error al obtener los productos</h1>;
+  }
 
   const images = products ? products.map((product) => product.img) : [];
 
-  /* loading === true && (
-    <div className="style pt-2">
-      <Loading />
-    </div>
-  ); */
-
   return (
-    <div>
-      {!filter && <Hero images={images} />}
-      {!filter ? (
-        <div id="catalogo" className="pt-5">
-          <h1 className="p-5 text-center">{title}</h1>
+    <main>
+      {!categoryId ? (
+        <div>
+          <PageTitle title={"Wexis | Inicio"} />
+          <Hero images={images} />
+          <div id="catalogo" className="pt-4 ">
+            <h1 className="p-5 text-center">{title}</h1>
+          </div>
         </div>
       ) : (
-        <h1 className="p-5 text-center text-uppercase">{categoryId}</h1>
+        <div>
+          <PageTitle title={`Wexis | Categoría: ${categoryId}`} />
+          <h1 className="p-5 text-center text-uppercase">{categoryId}</h1>
+        </div>
       )}
-      <div className="style pt-2">
+      <div className="style pt-2 ">
         {loading === true ? <Loading /> : <ItemList products={products} />}
       </div>
-    </div>
+    </main>
   );
 };
 

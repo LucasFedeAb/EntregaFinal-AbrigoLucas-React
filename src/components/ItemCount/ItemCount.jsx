@@ -14,14 +14,14 @@ const ItemCount = ({ stock, onAdd }) => {
 
   return (
     <div className="me-5 justify-content-between align-items-center">
-      <div className="d-flex mb-2 ">
+      <div className="d-flex mb-2">
         <ButtonCard
           label="-"
           colorHover="dark"
           font="bold"
           onClick={decrement}
         />
-        <h5 className=" ps-2 pt-2 pe-2">{count}</h5>
+        <button className=" btn pe-none fw-bolder">{count}</button>
         <ButtonCard
           label="+"
           colorHover="dark"

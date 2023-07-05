@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const Item = ({ category, id, img, name, price }) => {
   return (
     <div className="col mb-5 ">
-      <div className="card ">
+      <div className="card h-100">
         <div
           className="badge bg-dark text-white position-absolute"
           style={{ top: "0.5rem", right: "0.5rem" }}
@@ -28,7 +28,7 @@ const Item = ({ category, id, img, name, price }) => {
             {price}
           </div>
         </div>
-        <div className="card-footer p-4 pt-0 border-top-0 bg-transparent">
+        <div className="boton">
           <div className="text-center">
             <Link to={`/Producto/${id}`}>
               <ButtonCard label={"Ver detalle"} colorHover={"dark"} />

@@ -24,6 +24,20 @@
   height: 55px;
 }
 
+.expand:hover {
+  background-color: #555555;
+  color: #ffffff;
+}
+
+.dark {
+  --bs-navbar-color: transparent !important;
+}
+
+.toggler {
+  color: orange !important;
+  width: 1em !important;
+}
+
 @media (min-width: 769px) {
   .arrow {
     display: block;

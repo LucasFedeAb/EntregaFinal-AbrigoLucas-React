@@ -5,10 +5,10 @@ const SliderHero = ({ images }) => {
   return (
     <div
       id="carouselExampleAutoplaying"
-      className={`carousel slide carousel-fade bg-dark  ${Slider.sliderCustom} me-5`}
+      className={`carousel slide carousel-fade bg-dark  ${Slider.sliderCustom} me-5 mt-5`}
       data-bs-ride="carousel"
     >
-      <div className="carousel-inner">
+      <div className={`carousel-inner`}>
         {images.map((img, index) => (
           <div
             className={`carousel-item ${index === 0 ? "active" : ""}`}

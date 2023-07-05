@@ -1,13 +1,16 @@
 import { useState } from "react";
+import PageTitle from "../PageTitle/PageTitle";
 import ItemCount from "../ItemCount/ItemCount";
 import { useCart } from "../../Hooks/useCart";
 import ButtonCard from "../Buttons/ButtonCard";
-/* import CartContainer from "../CartContainer/CartContainer"; */
+/* import { useNotification } from "../../Notification/NotificationService.jsx";
+import CartContainer from "../CartContainer/CartContainer"; */
 import { Link } from "react-router-dom";
 
 const ItemDetail = ({ id, img, name, category, price, description, stock }) => {
   const [quantity, setQuantity] = useState(0);
-  const [showCartInfo, setShowCartInfo] = useState(false);
+  /* const [showCartInfo, setShowCartInfo] = useState(false); */
+  /* const { setNotification } = useNotification(); */
   const { addItem } = useCart();
 
   const handleOnAdd = (quantity) => {
@@ -21,16 +24,16 @@ const ItemDetail = ({ id, img, name, category, price, description, stock }) => {
       category,
       quantity,
     };
-
     addItem(objProduct);
   };
 
-  const handleCart = () => {
+  /*  const handleCart = () => {
     setShowCartInfo(true);
-  };
+  }; */
 
   return (
     <section className="py-5 mb-5 container-fluid">
+      <PageTitle title={`Wexis | Detalle/${category}/${name}`} />
       <div className="container-fluid px-4 px-lg-5 my-5">
         <div className="row gx-4 gx-lg-5 align-items-center">
           <div className="col-md-6">
@@ -64,7 +67,6 @@ const ItemDetail = ({ id, img, name, category, price, description, stock }) => {
                     label="Finalizar compra"
                     textColor="light"
                     bg="success"
-                    onClick={handleCart}
                   />
                 </Link>
               )}
@@ -72,11 +74,6 @@ const ItemDetail = ({ id, img, name, category, price, description, stock }) => {
           </div>
         </div>
       </div>
-      {/* {showCartInfo && ( // Bloque condicional para mostrar la información del carrito
-        <div>
-          <CartContainer />
-        </div>
-      )} */}
     </section>
   );
 };
