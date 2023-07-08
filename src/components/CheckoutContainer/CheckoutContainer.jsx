@@ -182,7 +182,7 @@ const CheckOutContainer = () => {
       ? createOrder(formData)
       : Swal.fire({
           icon: "error",
-          title: `Los mails no cinciden`,
+          title: `Los mails no cinciden.`,
           showConfirmButton: false,
         });
   };
