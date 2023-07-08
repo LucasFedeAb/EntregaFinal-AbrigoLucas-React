@@ -7,6 +7,7 @@ $ git clone https://github.com/LucasFedeAb/EntregaFinal-AbrigoLucas-React.git
 $ cd app
 $ npm install
 $ npm run dev
+```
 
 ### E-commerce web de venta de relojes ⌚
 
@@ -16,11 +17,10 @@ $ npm run dev
 - Sitio web responsive.
 - Base de datos con [Firebase](https://firebase.com)
 
-## *Configure sus variables de entorno para firestore
-
-
+## \*Configure sus variables de entorno para firestore
 
 ## Link a Deploy en vercel
+
 [Watch-store](https://entrega-final-abrigo-lucas-react-qfaf-g38j1sbpe-lucasfedeab.vercel.app/)
 
 ### Preview
@@ -32,4 +32,5 @@ $ npm run dev
 ![preview img](https://i.ibb.co/0Y5L2vt/readme3.jpg)
 
 ![preview img](https://i.ibb.co/8BVFgnH/readme4.jpg)
-```
+
+
