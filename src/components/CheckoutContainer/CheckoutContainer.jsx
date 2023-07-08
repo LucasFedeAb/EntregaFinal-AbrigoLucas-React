@@ -13,7 +13,7 @@ import Swal from "sweetalert2";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Loading from "../Loading/Loading";
-import CheckOut from "../Checkout/Checkout";
+import CheckOut from "../CheckOut/CheckOut";
 
 const CheckOutContainer = () => {
   const [loading, setLoading] = useState(false);
