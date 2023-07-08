@@ -1,52 +1,97 @@
-/* import { useState, useEffect } from "react"; */
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { useAsync } from "../../Hooks/useAsync";
+import {
+  getProducts,
+  getProductsBySection,
+} from "../../../services/firebase/firebase/products";
 import PageTitle from "../PageTitle/PageTitle.jsx";
-import Hero from "../Hero/Hero.jsx";
 import ItemList from "../ItemList/ItemList.jsx";
 import Loading from "../Loading/Loading";
-import "./ItemListContainer.css";
-
-import { useAsync } from "../../Hooks/useAsync.js";
-import { getProducts } from "../../../services/firebase/firebase/products.js";
+import Newsletter from "../HomeComponents/Newsletter/Newsletter";
+import HomeComponents from "../HomeComponents/HomeComponents";
 
 const ItemListContainer = ({ title }) => {
   const { categoryId } = useParams();
 
+  const navigate = useNavigate();
+
   const getProductsWithCategory = () => getProducts(categoryId);
-  /* const [images, setImages] = useState([]); */
 
-  const {
-    data: products,
-    error,
-    loading,
-  } = useAsync(getProductsWithCategory, [categoryId]);
+  const { data: products, loading } = useAsync(getProductsWithCategory, [
+    categoryId,
+  ]);
 
-  if (error) {
-    return <h1>Hubo un error al obtener los productos</h1>;
-  }
+  const section = "destacado";
+  const getProductsFeatured = () => getProductsBySection(section);
+  const { data: featuredProducts } = useAsync(getProductsFeatured, [section]);
 
-  const images = products ? products.map((product) => product.img) : [];
+  useEffect(() => {
+    const fetchData = async () => {
+      const products = await getProducts(categoryId);
+
+      if (!products || products.length === 0) {
+        navigate("/*");
+      }
+    };
+
+    fetchData();
+  }, [categoryId, navigate]);
+
+  const images =
+    featuredProducts && featuredProducts.length > 0
+      ? featuredProducts.map((product) => product.img)
+      : [];
 
   return (
-    <main>
-      {!categoryId ? (
-        <div>
-          <PageTitle title={"Wexis | Inicio"} />
-          <Hero images={images} />
-          <div id="catalogo" className="pt-4 ">
-            <h1 className="p-5 text-center">{title}</h1>
-          </div>
-        </div>
-      ) : (
-        <div>
-          <PageTitle title={`Wexis | Categoría: ${categoryId}`} />
-          <h1 className="p-5 text-center text-uppercase">{categoryId}</h1>
-        </div>
-      )}
-      <div className="style pt-2 ">
-        {loading === true ? <Loading /> : <ItemList products={products} />}
-      </div>
-    </main>
+    <>
+      <main>
+        {!categoryId ? (
+          <>
+            <HomeComponents
+              images={images}
+              featuredProducts={featuredProducts}
+            />
+
+            <div
+              id="catalogo"
+              className="d-flex justify-content-center pt-5 mt-5"
+            >
+              <h1
+                className={`pt-3 pb-3 ps-5 pe-5 text-center text-uppercase border border-warning border-bottom-0 border-end-0 border-start-0 border-2 `}
+              >
+                {title}
+              </h1>
+            </div>
+            <div className="pt-2">
+              {loading === true ? (
+                <Loading />
+              ) : (
+                <ItemList products={products} />
+              )}
+            </div>
+            <Newsletter />
+          </>
+        ) : (
+          <>
+            <div className="d-flex justify-content-center pt-5 mt-5">
+              <PageTitle title={`Wexis | Categoría: ${categoryId}`} />
+
+              <h1 className="pt-3 pb-3 ps-5 pe-5 text-center text-uppercase border border-warning border-bottom-0 border-end-0 border-start-0 border-2">
+                {categoryId}
+              </h1>
+            </div>
+            <div className="pt-2">
+              {loading === true ? (
+                <Loading />
+              ) : (
+                <ItemList products={products} />
+              )}
+            </div>
+          </>
+        )}
+      </main>
+    </>
   );
 };
 

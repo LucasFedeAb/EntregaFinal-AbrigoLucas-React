@@ -9,18 +9,14 @@ import {
 } from "firebase/firestore";
 import { useCart } from "../../Hooks/useCart";
 import { db } from "../../../services/firebase/firebaseConfig";
-
-import { useNotification } from "../../Notification/NotificationService.jsx";
+import Swal from "sweetalert2";
 import { useState } from "react";
-
-/* import { useNavigate } from "react-router-dom"; */
+import { useNavigate } from "react-router-dom";
 import Loading from "../Loading/Loading";
 import CheckOut from "../Checkout/Checkout";
-import SweetAlert from "../SweetAlert/SweetAlert";
 
 const CheckOutContainer = () => {
   const [loading, setLoading] = useState(false);
-  const [showAlert, setShowAlert] = useState(false);
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -34,14 +30,17 @@ const CheckOutContainer = () => {
   });
 
   const { cart, totalPrice, clearCart, totalQuantity } = useCart();
-  const { setNotification } = useNotification();
-  /* const navigate = useNavigate();
-  let succesOrder = false; */
-  let idOrder;
+
+  const navigate = useNavigate();
+
   //Generar orden de compra
   const createOrder = async (formData) => {
     const currentDate = new Date();
     const formattedDate = currentDate.toLocaleDateString("es-ES");
+    let fechaActual = new Date();
+    let horaActual = fechaActual.toLocaleTimeString();
+
+    console.log(horaActual);
     const {
       firstName,
       lastName,
@@ -71,6 +70,7 @@ const CheckOutContainer = () => {
       totalPrice,
       totalQuantity,
       createdAt: formattedDate,
+      horaActual,
     };
 
     try {
@@ -108,21 +108,61 @@ const CheckOutContainer = () => {
 
         const { id } = await addDoc(ordersRef, objOrder);
 
-        setShowAlert(true);
-        /* setNotification(
-          "success",
-          "La orden fue generada correctamente, el id es: " + id
-        ); */
+        Swal.fire({
+          title: `La order N° ${id} se genero con éxito.`,
+          icon: "success",
+          html: `
+          <h5>Resumen de compra</h5>
+          <p>Total compra: <strong>$${totalPrice}</strong></p>
+          <p> ${totalQuantity} producto/s</p>
+          <p>Fecha de compra: <strong>${formattedDate}</strong>  - Hora: <strong>${horaActual}</strong></p>
+          <h6>GRACIAS ${firstName.toUpperCase()} POR TU COMPRA !!</h6>
+          `,
+
+          confirmButtonText: "OK",
+          confirmButtonColor: "green",
+        });
 
         clearCart();
-        /* setTimeout(() => {
+
+        setTimeout(() => {
           navigate("/");
-        }, 2500); */
+        }, 2000);
       } else {
-        setNotification("error", "hay productos que no tienen stock");
+        const Toast = Swal.mixin({
+          toast: true,
+          position: "top-end",
+          showConfirmButton: false,
+          timer: 1500,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener("mouseenter", Swal.stopTimer);
+            toast.addEventListener("mouseleave", Swal.resumeTimer);
+          },
+        });
+
+        Toast.fire({
+          icon: "error",
+          title: "Hay productos sin stock",
+        });
       }
     } catch (error) {
-      setNotification("error", "hubo un error en la generacion de la orden");
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 1500,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener("mouseenter", Swal.stopTimer);
+          toast.addEventListener("mouseleave", Swal.resumeTimer);
+        },
+      });
+
+      Toast.fire({
+        icon: "error",
+        title: "Error en la generacion de la orden",
+      });
     } finally {
       setLoading(false);
     }
@@ -140,7 +180,11 @@ const CheckOutContainer = () => {
     e.preventDefault();
     formData.email === formData.confirmEmail
       ? createOrder(formData)
-      : alert("Los mails no coinciden");
+      : Swal.fire({
+          icon: "error",
+          title: `Los mails no cinciden`,
+          showConfirmButton: false,
+        });
   };
 
   if (loading) {
@@ -149,13 +193,6 @@ const CheckOutContainer = () => {
 
   return (
     <>
-      {showAlert && (
-        <SweetAlert
-          createOrder={createOrder}
-          formData={formData}
-          idOrder={idOrder}
-        />
-      )}
       <CheckOut
         createOrder={createOrder}
         handleFormSubmit={handleFormSubmit}

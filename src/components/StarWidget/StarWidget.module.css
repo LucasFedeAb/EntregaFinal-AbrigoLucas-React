@@ -1,0 +1,15 @@
+.rating:not(:checked) > input {
+  position: absolute;
+  appearance: none;
+}
+
+.rating:not(:checked) > label {
+  float: right;
+  cursor: pointer;
+  font-size: 30px;
+  color: #e58e09;
+}
+
+.rating:not(:checked) > label:before {
+  content: "★";
+}

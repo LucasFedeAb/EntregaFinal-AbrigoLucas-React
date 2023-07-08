@@ -11,7 +11,6 @@ const CartContainer = () => {
     <>
       <PageTitle title={`Wexis | Detalle de carrito`} />
       <section className="d-flex justify-content-center align-items-center mb-5 vh-100">
-        {/* Verificar si hay productos en carrito */}
         {cart !== null && cart.length > 0 ? (
           <CartInfo cart={cart} />
         ) : (

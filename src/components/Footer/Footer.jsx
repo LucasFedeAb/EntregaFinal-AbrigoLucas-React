@@ -8,15 +8,15 @@ const Footer = () => {
           </div>
           <div className="col-auto">
             <a className="link-light small" href="#!">
-              Privacy
+              Instagram
+            </a>
+            <span className="text-white mx-1">·</span>
+            <a className="link-light small" href="#!" >
+              Facebook
             </a>
             <span className="text-white mx-1">·</span>
             <a className="link-light small" href="#!">
-              Terms
-            </a>
-            <span className="text-white mx-1">·</span>
-            <a className="link-light small" href="#!">
-              Contact
+              Whatsapp
             </a>
           </div>
         </div>

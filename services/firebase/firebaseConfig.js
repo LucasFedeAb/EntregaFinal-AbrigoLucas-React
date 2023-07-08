@@ -2,12 +2,12 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBUkyjGs7IP9d9fP5BIYnG7x_4xH1-J9Wk",
-  authDomain: "watch-store-f1d33.firebaseapp.com",
-  projectId: "watch-store-f1d33",
-  storageBucket: "watch-store-f1d33.appspot.com",
-  messagingSenderId: "931177659745",
-  appId: "1:931177659745:web:40e2e774f5feb645a7d920",
+  apiKey: import.meta.env.VITE_apiKey,
+  authDomain: import.meta.env.VITE_authDomain,
+  projectId: import.meta.env.VITE_projectId,
+  storageBucket: import.meta.env.VITE_storageBucket,
+  messagingSenderId: import.meta.env.VITE_messagingSenderId,
+  appId: import.meta.env.VITE_appId,
 };
 
 // Initialize Firebase

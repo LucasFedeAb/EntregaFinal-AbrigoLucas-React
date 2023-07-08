@@ -1,5 +1,5 @@
 import { useState, useEffect, createContext } from "react";
-import { useNotification } from "../Notification/NotificationService";
+import Swal from "sweetalert2";
 
 export const CartContext = createContext({
   cart: [],
@@ -8,7 +8,6 @@ export const CartContext = createContext({
 export const CartProvider = ({ children }) => {
   const initialCart = JSON.parse(localStorage.getItem("cart")) || [];
   const [cart, setCart] = useState(initialCart);
-  const { setNotification } = useNotification();
 
   //Agregar producto a carrito
   const addItem = (productToAdd) => {
@@ -16,13 +15,41 @@ export const CartProvider = ({ children }) => {
       setCart((prev) => {
         return [...prev, productToAdd];
       });
-      setNotification(
-        "success",
-        `Se agrego correctamente ${productToAdd.quantity} ${productToAdd.name} al carrito`,
-        4
-      );
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        background: "#d4edda;",
+        showConfirmButton: false,
+        timer: 1500,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener("mouseenter", Swal.stopTimer);
+          toast.addEventListener("mouseleave", Swal.resumeTimer);
+        },
+      });
+
+      Toast.fire({
+        icon: "success",
+        title: "<span style='color: #155724;'>Agregado al carrito</span>",
+      });
     } else {
-      setNotification("danger", "Ya esta agregado");
+      const Toast = Swal.mixin({
+        toast: true,
+        background: "#f8d7da",
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener("mouseenter", Swal.stopTimer);
+          toast.addEventListener("mouseleave", Swal.resumeTimer);
+        },
+      });
+
+      Toast.fire({
+        icon: "error",
+        title: "<span style='color: #721c24;'>Ya se encuentra agregado</span>",
+      });
     }
   };
 

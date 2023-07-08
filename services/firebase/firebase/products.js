@@ -12,7 +12,25 @@ export const getProducts = (categoryId) => {
         const fields = doc.data();
         return { id: doc.id, ...fields };
       });
+      return productsAdapted;
+    })
+    .catch((error) => {
+      return error;
+    });
+};
 
+export const getProductsBySection = (section) => {
+  const productsRef = query(
+    collection(db, "products"),
+    where("section", "==", section)
+  );
+
+  return getDocs(productsRef)
+    .then((querySnapshot) => {
+      const productsAdapted = querySnapshot.docs.map((doc) => {
+        const fields = doc.data();
+        return { id: doc.id, ...fields };
+      });
       return productsAdapted;
     })
     .catch((error) => {

@@ -1,0 +1,139 @@
+/*=============== STORY ===============*/
+.container {
+  max-width: 1024px;
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+}
+.section {
+  padding: 6.5rem 0 1rem;
+}
+
+.section__title {
+  position: relative;
+  font-size: 1rem;
+  margin-bottom: 3rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-align: center;
+  margin: 5rem 0rem;
+  padding: 5rem 0rem;
+}
+
+.section__title::before {
+  content: "";
+  position: absolute;
+  top: -1rem;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: 67px;
+  height: 1px;
+  background-color: #ffb566;
+}
+
+.grid {
+  display: grid;
+}
+
+.story__container {
+  row-gap: 7.5rem;
+  border-top: 2px solid #ffb566;
+  margin-bottom: 5rem;
+}
+
+.story__title {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.story__description {
+  margin-bottom: 2.5rem;
+}
+
+.story__images {
+  position: relative;
+}
+
+.story__img,
+.story__square {
+  width: 250px;
+}
+
+.story__square {
+  height: 250px;
+  background-color: #ffb566;
+}
+
+.story__img {
+  position: absolute;
+  left: 3rem;
+  top: -3rem;
+}
+
+/*=============== BREAKPOINTS ===============*/
+/* For small devices */
+@media screen and (max-width: 320px) {
+  .container {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+
+  .story__square,
+  .story__img {
+    width: 180px;
+  }
+
+  .story__square {
+    height: 180px;
+  }
+}
+
+/* For medium devices */
+
+@media screen and (min-width: 767px) {
+  .section {
+    padding: 8rem 0 1rem;
+  }
+
+  .story__container {
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+  }
+
+  .story__section-title {
+    text-align: initial;
+  }
+  .story__section-title::before {
+    margin: initial;
+  }
+  .story__images {
+    order: -1;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .story__container {
+    column-gap: 8rem;
+  }
+
+  .story__square,
+  .story__img {
+    width: 450px;
+  }
+}
+
+/* For large devices */
+@media screen and (min-width: 1024px) {
+  .container {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .story__container {
+    padding-top: 3rem;
+  }
+  .story__img {
+    left: 5rem;
+    top: -5rem;
+  }
+}
