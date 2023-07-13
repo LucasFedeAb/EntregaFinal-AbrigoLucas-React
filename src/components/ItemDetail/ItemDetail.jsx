@@ -3,15 +3,10 @@ import PageTitle from "../PageTitle/PageTitle";
 import ItemCount from "../ItemCount/ItemCount";
 import { useCart } from "../../Hooks/useCart";
 import ButtonCard from "../Buttons/ButtonCard";
-/* import { useNotification } from "../../Notification/NotificationService.jsx";
-import CartContainer from "../CartContainer/CartContainer"; */
 import { Link } from "react-router-dom";
-/* import Error404 from "../Error404/Error404"; */
 
 const ItemDetail = ({ id, img, name, category, price, description, stock }) => {
   const [quantity, setQuantity] = useState(0);
-  /* const [showCartInfo, setShowCartInfo] = useState(false); */
-  /* const { setNotification } = useNotification(); */
   const { addItem } = useCart();
 
   const handleOnAdd = (quantity) => {
@@ -28,10 +23,6 @@ const ItemDetail = ({ id, img, name, category, price, description, stock }) => {
     addItem(objProduct);
   };
 
-  /*  const handleCart = () => {
-    setShowCartInfo(true);
-  }; */
-
   return (
     <section className="py-5 mb-5 container-fluid">
       <PageTitle title={`Wexis | Detalle de producto | ${name}`} />
@@ -39,7 +30,8 @@ const ItemDetail = ({ id, img, name, category, price, description, stock }) => {
         <div className="row gx-4 gx-lg-5 align-items-center">
           <div className="col-md-6">
             <img
-              className="card-img-top mb-5 mb-md-0 w-50"
+              className="card-img-top  mb-5 mb-md-0 w-50"
+              style={{ maxWidth: "40%" }}
               src={img}
               alt="..."
             />

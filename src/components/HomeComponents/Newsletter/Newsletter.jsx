@@ -15,7 +15,7 @@ const Newsletter = () => {
               cupones, regalos y mucho más.
             </p>
           </div>
-          <form action className={`${styles.newsletter__subscribe}`}>
+          <form className={`${styles.newsletter__subscribe}`}>
             <input
               type="email"
               placeholder="Enter your email"

@@ -6,16 +6,12 @@ const Hero = ({ images }) => {
   return (
     <>
       <section
-        className={`d-flex flex-column justify-content-center align-items-center ${style.container}`}
+        className={`container-fluid justify-content-center align-items-center bg-black text-light`}
       >
-        <div
-          className={`d-flex flex-row  align-items-center justify-content-between pe-5 ${style.heroImg}`}
-        >
-          <div
-            className={` justify-content-start ps-5 d-none d-md-block ${style.title}`}
-          >
-            <h1 className={`fw-bold`}>LLEVAMOS EL TIEMPO A TUS MANOS</h1>
-            <p className={`d-none d-lg-block`}>
+        <div className={`row  justify-content-center align-items-center`}>
+          <div className={`col-lg-4 align-items-center d-none d-lg-block`}>
+            <h1 className={`fw-bold `}>LLEVAMOS EL TIEMPO A TUS MANOS</h1>
+            <p className={``}>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo
               ratione dicta expedita vero corporis deserunt tenetur enim, saepe
               rem, quo reiciendis sapiente explicabo dolores iusto libero quae
@@ -37,8 +33,21 @@ const Hero = ({ images }) => {
               </a>
             </div>
           </div>
-          <div className={`d-none d-lg-block`}>
-            <SliderHero images={images} />
+          <div
+            className={`col-lg-4 d-flex justify-content-center align-items-center `}
+          >
+            <img
+              className={``}
+              src="https://i.ibb.co/2KYsMxJ/hero.png"
+              alt="hero"
+            />
+          </div>
+          <div className="col-lg-4  d-none d-lg-block">
+            <div
+              className={` d-flex justify-content-end align-items-center pt-4 `}
+            >
+              <SliderHero images={images} />
+            </div>
           </div>
         </div>
       </section>

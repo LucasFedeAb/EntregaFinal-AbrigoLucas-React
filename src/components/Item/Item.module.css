@@ -1,7 +1,7 @@
 /*=============== GOOGLE FONTS ===============*/
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
 
-/*=============== FEATURED ===============*/
+/*=============== list ===============*/
 .container {
   max-width: 1024px;
   margin-left: 1.5rem;
@@ -40,11 +40,12 @@
   background-color: #ffb566;
 }
 
-.featured__container {
+.list__container {
   row-gap: 2.5rem;
+  margin-bottom: 2rem;
 }
 
-.featured__card {
+.list__card {
   position: relative;
   text-align: center;
   padding-top: 2rem;
@@ -53,8 +54,9 @@
   transition: 0.3s;
 }
 
-.featured__tag {
-  background-color: #ffb566;
+.list__tag {
+  background-color: gray;
+  /* background-color: #ffb566; */
   padding: 0.5rem 1rem;
   color: #fff;
   text-transform: uppercase;
@@ -62,48 +64,43 @@
   font-weight: 500;
   position: absolute;
   transform: rotate(-90deg);
-  left: -1rem;
+  left: -2.2rem;
   top: 3rem;
 }
 
-.featured__img {
+.list__img {
   height: 214px;
   margin-bottom: 1rem;
 }
 
-.featured__title,
-.featured__price {
+.list__data {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.list__title,
+.list__price {
   font-size: 1rem;
   font-weight: 700;
 }
 
-.featured__title {
+.list__title {
   text-transform: uppercase;
   margin-bottom: 0.75rem;
 }
 
-.featured__price {
-  display: block;
+.list__price {
   color: #ffb566;
-  transition: 0.3s;
+  font-size: 1.2rem;
 }
 
-.featured__button {
+.list__button {
   font-size: 0.813rem;
-  transform: translateY(1rem);
-  opacity: 0;
-}
-
-.featured__card:hover {
-  box-shadow: 0 12px 32px hsla(0, 0%, 20%, 0.1);
   padding: 2rem 0 3rem 0;
 }
 
-.featured__card:hover .featured__button {
-  transform: translateY(0);
-  opacity: 1;
-}
-
-.featured__card:hover .featured__price {
-  margin-bottom: 1.5rem;
+.list__card:hover {
+  box-shadow: 0 12px 32px #3333331a;
 }

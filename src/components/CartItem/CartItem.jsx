@@ -24,11 +24,11 @@ const CartItem = ({ id, img, quantity, name, price }) => {
           </div>
           <div className="text-center ">
             <h6 className="">Precio</h6>
-            <span>{price} </span>
+            <span>${price} </span>
           </div>
           <div className="text-center ">
             <h6 className="">Subtotal</h6>
-            <span>{quantity * price} </span>
+            <span>${quantity * price} </span>
           </div>
           <button
             className="border-none btn  h-25 ms-3 py-1"

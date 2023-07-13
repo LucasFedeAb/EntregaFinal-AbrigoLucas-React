@@ -11,7 +11,7 @@ const Footer = () => {
               Instagram
             </a>
             <span className="text-white mx-1">·</span>
-            <a className="link-light small" href="#!" >
+            <a className="link-light small" href="#!">
               Facebook
             </a>
             <span className="text-white mx-1">·</span>

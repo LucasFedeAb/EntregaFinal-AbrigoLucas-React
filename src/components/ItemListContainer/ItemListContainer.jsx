@@ -18,13 +18,13 @@ const ItemListContainer = ({ title }) => {
 
   const getProductsWithCategory = () => getProducts(categoryId);
 
-  const { data: products, loading } = useAsync(getProductsWithCategory, [
-    categoryId,
-  ]);
+  const { data: products } = useAsync(getProductsWithCategory, [categoryId]);
 
   const section = "destacado";
   const getProductsFeatured = () => getProductsBySection(section);
-  const { data: featuredProducts } = useAsync(getProductsFeatured, [section]);
+  const { data: featuredProducts, loading } = useAsync(getProductsFeatured, [
+    section,
+  ]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -36,7 +36,7 @@ const ItemListContainer = ({ title }) => {
     };
 
     fetchData();
-  }, [categoryId, navigate]);
+  }, [categoryId]);
 
   const images =
     featuredProducts && featuredProducts.length > 0
@@ -51,6 +51,7 @@ const ItemListContainer = ({ title }) => {
             <HomeComponents
               images={images}
               featuredProducts={featuredProducts}
+              loading={loading}
             />
 
             <div
