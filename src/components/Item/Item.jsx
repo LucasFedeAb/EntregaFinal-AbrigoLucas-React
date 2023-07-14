@@ -1,49 +1,38 @@
 import StarWidget from "../StarWidget/StarWidget";
 import ButtonCard from "../Buttons/ButtonCard";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+/* import { useState } from "react"; */
+import styles from "./Item.module.css";
 
 const Item = ({ category, id, img, name, price, section }) => {
-  const [hover, setHover] = useState(false);
+  /* const [hover, setHover] = useState(false); */
   return (
-    <article className="col mb-5">
-      <div
-        className="card h-100 "
-        style={{
-          boxShadow: hover ? "0 12px 32px #3333331a" : "none",
-        }}
-        onMouseEnter={() => setHover(true)}
-        onMouseLeave={() => setHover(false)}
-      >
-        <div
-          className="badge bg-warning text-white position-absolute text-uppercase "
-          style={{ top: "0.5rem", right: "0.5rem" }}
-        >
-          {section}
-        </div>
-        <img
-          className="card-img-top justify-content-center p-5 img-height"
-          src={img}
-          alt={`${{ name }}`}
-        />
-        <div className="card-body p-4">
-          <div className="text-center">
-            <h5 className="fw-bolder">{name}</h5>
-            <div className="d-flex justify-content-center small text-warning mb-2">
-              <StarWidget />
-            </div>
-            <span className="text-muted text-decoration-line-through"></span>$
-            {price}
-          </div>
+    <div className={`${styles.list__container}`}>
+      <article className={`${styles.list__card}`}>
+        {!section ? (
+          <>
+            <span className={`d-none`}>{section}</span>
+          </>
+        ) : (
+          <>
+            <span className={`${styles.list__tag}`}>{section}</span>
+          </>
+        )}
+
+        <img src={img} alt={`${{ name }}`} className={`${styles.list__img}`} />
+        <div className={`${styles.list__data}`}>
+          <h3 className={`${styles.list__title}`}>{name}</h3>
+          <StarWidget />
+          <span className={`${styles.list__price}`}>${price}</span>
         </div>
 
-        <div className="text-center p-5">
-          <Link to={`/Producto/${id}`}>
-            <ButtonCard label={"Ver detalle"} colorHover={"dark"} />
-          </Link>
-        </div>
-      </div>
-    </article>
+        <Link to={`/Producto/${id}`}>
+          <div className={`${styles.list__button}`}>
+            <ButtonCard label={"Ver detalle"} textColor={"light"} bg={"dark"} />
+          </div>
+        </Link>
+      </article>
+    </div>
   );
 };
 

@@ -101,9 +101,7 @@ const CheckOut = ({
               onChange={handleInputChange}
               required
             />
-            <div className="invalid-feedback">
-              Por favor ingrese su apellido.
-            </div>
+            <div className="invalid-feedback">Por favor ingrese su ciudad.</div>
           </div>
           <div className="col-md-6">
             <label htmlFor="address" className="form-label">
@@ -119,7 +117,7 @@ const CheckOut = ({
               required
             />
             <div className="invalid-feedback">
-              Por favor ingrese su apellido.
+              Por favor ingrese su dirección.
             </div>
           </div>
           <div className="col-md-4">
@@ -160,7 +158,7 @@ const CheckOut = ({
               required
             />
             <div className="invalid-feedback">
-              Por favor ingrese su apellido.
+              Por favor ingrese su codigo postal.
             </div>
           </div>
           <div className="col-md-4">
@@ -177,7 +175,7 @@ const CheckOut = ({
               required
             />
             <div className="invalid-feedback">
-              Please provide a valid phone number.
+              Por favor ingrese su numero de telefono.
             </div>
           </div>
 

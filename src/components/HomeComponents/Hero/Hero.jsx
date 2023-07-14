@@ -6,22 +6,26 @@ const Hero = ({ images }) => {
   return (
     <>
       <section
-        className={`d-flex flex-column justify-content-center align-items-center ${style.container}`}
+        className={`container-fluid align-items-center bg-black text-light`}
       >
         <div
-          className={`d-flex flex-row  align-items-center justify-content-between pe-5 ${style.heroImg}`}
+          className={`row flex-column-reverse flex-lg-row align-items-center container-fluid`}
         >
-          <div
-            className={` justify-content-start ps-5 d-none d-md-block ${style.title}`}
-          >
-            <h1 className={`fw-bold`}>LLEVAMOS EL TIEMPO A TUS MANOS</h1>
+          <div className={`col-lg-4 align-items-center `}>
+            <h1
+              className={`fw-bold text-center text-lg-start ps-5 pt-5 pe-5 pb-3 ps-lg-0 pt-lg-0 pe-lg-0 pb-lg-0`}
+            >
+              LLEVAMOS EL TIEMPO A TUS MANOS
+            </h1>
             <p className={`d-none d-lg-block`}>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo
               ratione dicta expedita vero corporis deserunt tenetur enim, saepe
               rem, quo reiciendis sapiente explicabo dolores iusto libero quae
               fugiat voluptates hic.
             </p>
-            <div className={`d-flex`}>
+            <div
+              className={`d-flex justify-content-center justify-content-lg-start m-4 m-lg-0`}
+            >
               <a
                 href="#featured"
                 className={`text-center m-2 bg-light text-black text-decoration-none ${style.button}`}
@@ -37,8 +41,19 @@ const Hero = ({ images }) => {
               </a>
             </div>
           </div>
-          <div className={`d-none d-lg-block`}>
-            <SliderHero images={images} />
+          <div className={`col-lg-4 d-flex justify-content-center `}>
+            <img
+              className={`${style.heroImg}`}
+              src="https://i.ibb.co/2KYsMxJ/hero.png"
+              alt="hero"
+            />
+          </div>
+          <div className="col-lg-4  d-none d-lg-block">
+            <div
+              className={` d-flex justify-content-end align-items-center pt-4 `}
+            >
+              <SliderHero images={images} />
+            </div>
           </div>
         </div>
       </section>

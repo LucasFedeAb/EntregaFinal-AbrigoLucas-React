@@ -1,8 +1,8 @@
+import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ItemListContainer from "./components/ItemListContainer/ItemListContainer.jsx";
 import Footer from "./components/Footer/Footer.jsx";
 import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer.jsx";
-import "./App.css";
 import { CartProvider } from "./context/CartContext.jsx";
 import CartContainer from "./components/CartContainer/CartContainer.jsx";
 import CheckOutContainer from "./components/CheckoutContainer/CheckoutContainer.jsx";
@@ -27,7 +27,7 @@ function App() {
             <Route path="/Producto/:itemId" element={<ItemDetailContainer />} />
             <Route path="/cart" element={<CartContainer />} />
             <Route path="/checkout" element={<CheckOutContainer />} />
-            <Route path="/*" element={<Error404 />} />
+            <Route path="*" element={<Error404 />} />
           </Routes>
         </CartProvider>
         <Footer />

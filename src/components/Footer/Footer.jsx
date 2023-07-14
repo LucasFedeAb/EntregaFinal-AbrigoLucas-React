@@ -1,6 +1,6 @@
 const Footer = () => {
   return (
-    <footer className="bg-dark py-4 mt-auto">
+    <footer className="bg-dark py-4 mt-5">
       <div className="container px-5">
         <div className="row align-items-center justify-content-between flex-column flex-sm-row">
           <div className="col-auto">
@@ -11,7 +11,7 @@ const Footer = () => {
               Instagram
             </a>
             <span className="text-white mx-1">·</span>
-            <a className="link-light small" href="#!" >
+            <a className="link-light small" href="#!">
               Facebook
             </a>
             <span className="text-white mx-1">·</span>
