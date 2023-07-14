@@ -1,12 +1,13 @@
 import { Link } from "react-router-dom";
 import CartWidget from "../CartWidget/CartWidget.jsx";
-import styles from "./NavbarOther.module.css";
+import styles from "./Navbar.module.css";
 
-const NavbarOther = ({
+const Navbar = ({
   dropdownOpen,
   categories,
   handleMouseEnter,
   handleMouseLeave,
+  showHomeNavbar,
 }) => {
   return (
     <header className={`${styles.heigth}`}>
@@ -16,7 +17,7 @@ const NavbarOther = ({
         <div className="container-fluid">
           <Link to={"/"}>
             <img
-              className={`navbar-brand ${styles.logo} `}
+              className={`navbar-brand me-0 pe-0 ${styles.logo} `}
               src="https://i.ibb.co/YhQDvqc/logo.png"
               alt="logo"
             />
@@ -80,6 +81,13 @@ const NavbarOther = ({
                     ))}
                   </ul>
                 </li>
+                {showHomeNavbar == true && (
+                  <li className="nav-item">
+                    <a className="nav-link text-light " href="#history">
+                      NOSOTROS
+                    </a>
+                  </li>
+                )}
               </ul>
             </div>
           </div>
@@ -105,4 +113,4 @@ const NavbarOther = ({
   );
 };
 
-export default NavbarOther;
+export default Navbar;

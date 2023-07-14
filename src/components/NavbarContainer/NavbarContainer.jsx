@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { getDocs, collection } from "firebase/firestore";
 import { db } from "../../../services/firebase/firebaseConfig.js";
-import NavbarHome from "../NavbarHome/NavbarHome.jsx";
-import NavbarOther from "../NavbarOther/NavbarOther.jsx";
+import Navbar from "../Navbar/Navbar.jsx";
+/* import NavbarOther from "../NavbarOther/NavbarOther.jsx"; */
 
 const NavbarContainer = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -46,21 +46,13 @@ const NavbarContainer = () => {
 
   return (
     <>
-      {showHomeNavbar ? (
-        <NavbarHome
-          dropdownOpen={dropdownOpen}
-          categories={categories}
-          handleMouseEnter={handleMouseEnter}
-          handleMouseLeave={handleMouseLeave}
-        />
-      ) : (
-        <NavbarOther
-          dropdownOpen={dropdownOpen}
-          categories={categories}
-          handleMouseEnter={handleMouseEnter}
-          handleMouseLeave={handleMouseLeave}
-        />
-      )}
+      <Navbar
+        dropdownOpen={dropdownOpen}
+        categories={categories}
+        handleMouseEnter={handleMouseEnter}
+        handleMouseLeave={handleMouseLeave}
+        showHomeNavbar={showHomeNavbar}
+      />
     </>
   );
 };

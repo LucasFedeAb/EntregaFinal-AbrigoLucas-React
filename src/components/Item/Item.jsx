@@ -9,7 +9,16 @@ const Item = ({ category, id, img, name, price, section }) => {
   return (
     <div className={`${styles.list__container}`}>
       <article className={`${styles.list__card}`}>
-        <span className={`${styles.list__tag}`}>{section}</span>
+        {!section ? (
+          <>
+            <span className={`d-none`}>{section}</span>
+          </>
+        ) : (
+          <>
+            <span className={`${styles.list__tag}`}>{section}</span>
+          </>
+        )}
+
         <img src={img} alt={`${{ name }}`} className={`${styles.list__img}`} />
         <div className={`${styles.list__data}`}>
           <h3 className={`${styles.list__title}`}>{name}</h3>
