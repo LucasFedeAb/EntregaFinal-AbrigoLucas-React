@@ -2,11 +2,12 @@ import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { getDoc, doc } from "firebase/firestore";
 import { db } from "../../../services/firebase/firebaseConfig";
-import { getProducts } from "../../../services/firebase/firebase/products";
-import { useAsync } from "../../Hooks/useAsync";
+/* import { getProducts } from "../../../services/firebase/firebase/products";
+import { useAsync } from "../../Hooks/useAsync"; */
 import PageTitle from "../PageTitle/PageTitle";
 import ItemDetail from "../ItemDetail/ItemDetail";
 import Loading from "../Loading/Loading";
+import Error404 from "../Error404/Error404";
 
 const ItemDetailContainer = () => {
   const [product, setProduct] = useState(null);
@@ -23,6 +24,7 @@ const ItemDetailContainer = () => {
         const fields = querySnapshot.data();
         const productAdapted = { id: querySnapshot.id, ...fields };
         setProduct(productAdapted);
+        localStorage.setItem("currentId", itemId);
       } else {
         navigate("*");
       }
@@ -37,23 +39,19 @@ const ItemDetailContainer = () => {
     getProductById(itemId);
   }, [itemId]);
 
-  const getProductsDb = () => getProducts();
-  const { data: products } = useAsync(getProductsDb, []);
-
-  useEffect(() => {
-    if (products) {
-      const productExists = products.some((product) => product.id === itemId);
-      if (!productExists) {
-        navigate("*");
-      }
-    }
-  }, [itemId, products, navigate]);
-
   return (
-    <div>
-      <PageTitle title={"Wexis | Detalle de producto"} />
-      {loading ? <Loading /> : product && <ItemDetail {...product} />}
-    </div>
+    <>
+      <div>
+        <PageTitle title={"Wexis | Detalle de producto"} />
+        {loading ? (
+          <Loading />
+        ) : product ? (
+          <ItemDetail {...product} />
+        ) : (
+          <Error404 />
+        )}
+      </div>
+    </>
   );
 };
 
