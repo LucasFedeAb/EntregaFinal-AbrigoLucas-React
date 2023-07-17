@@ -10,7 +10,7 @@ import Loading from "../Loading/Loading";
 import Error404 from "../Error404/Error404";
 
 const ItemDetailContainer = () => {
-  const [product, setProduct] = useState(null);
+  const [product, setProduct] = useState();
   const [loading, setLoading] = useState(true);
 
   const { itemId } = useParams();

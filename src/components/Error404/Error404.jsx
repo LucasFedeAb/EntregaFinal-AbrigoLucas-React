@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+/* import { Link } from "react-router-dom"; */
 
 const Error404 = () => {
   return (
@@ -11,11 +11,11 @@ const Error404 = () => {
             No pudimos encontrar la página que estabas buscando. puede haber
             sido movido, o simplemente no existe.
           </p>
-          <Link to={"/"}>
+          {/* <Link to={"/"}>
             <a className="btn btn-primary" href="#">
               Volver al inicio
             </a>
-          </Link>
+          </Link> */}
         </div>
       </main>
     </>
