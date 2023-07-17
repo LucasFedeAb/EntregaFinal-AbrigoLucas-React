@@ -38,7 +38,9 @@ const ItemDetailContainer = () => {
   const getProductsDb = () => getProducts();
   const { data: products } = useAsync(getProductsDb, []);
 
-  if (itemId != products.id) {
+  const productExists = products.some((product) => product.id === itemId);
+
+  if (!productExists) {
     return navigate("*");
   }
 
