@@ -10,51 +10,51 @@ import Loading from "../Loading/Loading";
 
 const ItemDetailContainer = () => {
   const [product, setProduct] = useState(null);
-  const [loading, setLoading] = useState();
+  const [loading, setLoading] = useState(true);
 
   const { itemId } = useParams();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    setLoading(true);
-    const productRef = doc(db, "products", itemId);
-
-    getDoc(productRef)
-      .then((querySnapshot) => {
+  const getProductById = async (id) => {
+    try {
+      const productRef = doc(db, "products", id);
+      const querySnapshot = await getDoc(productRef);
+      if (querySnapshot.exists()) {
         const fields = querySnapshot.data();
         const productAdapted = { id: querySnapshot.id, ...fields };
         setProduct(productAdapted);
+      } else {
+        navigate("*");
+      }
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-        localStorage.setItem("currentId", itemId);
-      })
-      .catch((error) => {
-        return error;
-      })
-      .finally(() => {
-        setLoading(false);
-      });
+  useEffect(() => {
+    getProductById(itemId);
   }, [itemId]);
 
   const getProductsDb = () => getProducts();
   const { data: products } = useAsync(getProductsDb, []);
 
-  const productExists = products.some((product) => product.id === itemId);
-
-  if (!productExists) {
-    return navigate("*");
-  }
+  useEffect(() => {
+    if (products) {
+      const productExists = products.some((product) => product.id === itemId);
+      if (!productExists) {
+        navigate("*");
+      }
+    }
+  }, [itemId, products, navigate]);
 
   return (
     <div>
-      {loading ? (
-        <div>
-          <PageTitle title={"Wexis | Detalle de producto"} />
-          <Loading />
-        </div>
-      ) : (
-        <ItemDetail {...product} />
-      )}
+      <PageTitle title={"Wexis | Detalle de producto"} />
+      {loading ? <Loading /> : product && <ItemDetail {...product} />}
     </div>
   );
 };
+
 export default ItemDetailContainer;
