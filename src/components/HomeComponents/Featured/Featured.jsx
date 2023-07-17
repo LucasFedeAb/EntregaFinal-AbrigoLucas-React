@@ -1,4 +1,4 @@
-import styles from "./Feactured.module.css";
+import styles from "./Featured.module.css";
 import ButtonCard from "../../Buttons/ButtonCard";
 import { Link } from "react-router-dom";
 

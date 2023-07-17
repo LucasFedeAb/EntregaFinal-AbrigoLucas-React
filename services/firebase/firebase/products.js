@@ -1,4 +1,11 @@
-import { getDocs, collection, query, where } from "firebase/firestore";
+import {
+  getDocs,
+  getDoc,
+  doc,
+  collection,
+  query,
+  where,
+} from "firebase/firestore";
 import { db } from "../firebaseConfig";
 
 export const getProducts = (categoryId) => {
@@ -38,4 +45,15 @@ export const getProductsBySection = (section) => {
     });
 };
 
-export const getProductById = (productId) => {};
+export const getProductById = (productId) => {
+  const productDocRef = doc(db, "products", productId);
+
+  return getDoc(productDocRef)
+    .then((docSnapshot) => {
+      const productData = docSnapshot.data();
+      return { id: docSnapshot.id, ...productData };
+    })
+    .catch((error) => {
+      return error;
+    });
+};

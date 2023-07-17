@@ -1,11 +1,9 @@
 import StarWidget from "../StarWidget/StarWidget";
 import ButtonCard from "../Buttons/ButtonCard";
 import { Link } from "react-router-dom";
-/* import { useState } from "react"; */
 import styles from "./Item.module.css";
 
 const Item = ({ category, id, img, name, price, section }) => {
-  /* const [hover, setHover] = useState(false); */
   return (
     <div className={`${styles.list__container}`}>
       <article className={`${styles.list__card}`}>

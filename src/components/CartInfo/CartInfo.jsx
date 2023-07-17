@@ -3,7 +3,6 @@ import ButtonCard from "../Buttons/ButtonCard";
 import { Link } from "react-router-dom";
 import CartItem from "../CartItem/CartItem";
 import icon from "./assets/return.svg";
-import style from "./CartInfo.module.css";
 
 const CartInfo = () => {
   const { totalQuantity, totalPrice, cart, clearCart } = useCart();
@@ -12,7 +11,7 @@ const CartInfo = () => {
 
   return (
     <>
-      <section className={cart.length > 1 ? `vh-0 ` : ` vh-100`}>
+      <section className={cart.length <= 1 && `vh-100`}>
         <div className="pt-5 mb-5">
           <h3 className="text-center">RESUMÉN DE CARRITO</h3>
 

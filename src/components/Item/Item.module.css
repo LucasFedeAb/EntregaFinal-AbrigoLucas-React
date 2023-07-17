@@ -51,7 +51,6 @@
 
 .list__tag {
   background-color: gray;
-  /* background-color: #ffb566; */
   padding: 0.5rem 1rem;
   color: #fff;
   text-transform: uppercase;
@@ -83,7 +82,6 @@
 
 .list__title {
   text-transform: uppercase;
-  margin-bottom: 0.75rem;
 }
 
 .list__price {

@@ -8,10 +8,8 @@ const Story = () => {
         id="history"
       >
         <div className={`${styles.story__container} ${styles.grid}`}>
-          <div className={`${styles.story__data} `}>
-            <h2 className={`${styles["story__section_title"]} `}>
-              Nuestra historia
-            </h2>
+          <div>
+            <h2 className={`${styles.section__title} `}>Nuestra historia</h2>
             <h1 className={`${styles.story__title} `}>
               Reloj inspirador de <br /> este año
             </h1>

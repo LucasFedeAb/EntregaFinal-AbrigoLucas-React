@@ -8,17 +8,6 @@
   max-width: 400px;
 }
 
-/* .arrow {
-  display: inline-block;
-  width: 0;
-  height: 0;
-  content: "";
-  border-top: 10px solid #fff;
-  border-right: 5px solid transparent;
-  border-left: 5px solid transparent;
-  margin-left: 5px;
-} */
-
 .logo {
   border-radius: 50%;
   width: 68px;
@@ -30,14 +19,13 @@
   color: #ffffff;
 }
 
-/* .dark {
+.dark {
   --bs-navbar-color: transparent !important;
-} */
+}
 
-/* .toggler {
-  color: orange !important;
-  width: 1em !important;
-} */
+.toggler {
+  width: 0.8em !important;
+}
 
 @media (min-width: 769px) {
   .arrow {
@@ -47,7 +35,5 @@
   .logo {
     width: 100px;
     height: 80px;
-    /* width: 58px;
-        height:65px; */
   }
 }

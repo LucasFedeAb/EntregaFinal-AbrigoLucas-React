@@ -3,7 +3,6 @@ import { useLocation } from "react-router-dom";
 import { getDocs, collection } from "firebase/firestore";
 import { db } from "../../../services/firebase/firebaseConfig.js";
 import Navbar from "../Navbar/Navbar.jsx";
-/* import NavbarOther from "../NavbarOther/NavbarOther.jsx"; */
 
 const NavbarContainer = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);

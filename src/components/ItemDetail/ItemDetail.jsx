@@ -41,10 +41,10 @@ const ItemDetail = ({ id, img, name, category, price, description, stock }) => {
             <h1 className="display-5 fw-bolder">Detalle de producto</h1>
             <div className="small mb-1">Stock: {stock}</div>
             <div className="fs-5 mb-5">
-              <span className="text-decoration-line-through">
+              <span className="text-decoration-line-through pe-2">
                 ${price + 1000}
               </span>
-              <span>$ {price}</span>
+              <span> ${price}</span>
             </div>
             <h1>{name}</h1>
             <p className="lead">{description}</p>

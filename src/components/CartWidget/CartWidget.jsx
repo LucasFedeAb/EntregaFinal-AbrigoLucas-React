@@ -8,7 +8,7 @@ const CartWidget = () => {
     <div>
       <button className="btn position-relative  me-2">
         <img
-          className="position-absolute top-0 start-0 ps-1"
+          className="position-absolute top-0 start-0 ps-1 w-100"
           src={cart}
           alt="cart"
         />

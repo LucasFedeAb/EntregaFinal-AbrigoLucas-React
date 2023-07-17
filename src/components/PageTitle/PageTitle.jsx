@@ -2,15 +2,14 @@ import { useEffect } from "react";
 
 const PageTitle = ({ title }) => {
   useEffect(() => {
-    document.title = title; // Actualiza el título de la pestaña
+    document.title = title;
 
-    // Limpia el título de la pestaña cuando el componente se desmonta
     return () => {
-      document.title; // Título original
+      document.title;
     };
   }, [title]);
 
-  return null; // No renderiza ningún contenido adicional
+  return null;
 };
 
 export default PageTitle;

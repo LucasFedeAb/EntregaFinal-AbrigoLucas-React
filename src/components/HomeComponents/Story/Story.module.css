@@ -15,8 +15,6 @@
   text-transform: uppercase;
   letter-spacing: 2px;
   text-align: center;
-  margin: 5rem 0rem;
-  padding: 5rem 0rem;
 }
 
 .section__title::before {
@@ -37,7 +35,6 @@
 
 .story__container {
   row-gap: 7.5rem;
-  border-top: 2px solid #ffb566;
   margin-bottom: 5rem;
 }
 

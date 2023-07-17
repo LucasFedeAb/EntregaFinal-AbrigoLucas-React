@@ -23,6 +23,9 @@ export const CartProvider = ({ children }) => {
         timer: 1500,
         timerProgressBar: true,
         didOpen: (toast) => {
+          const swalContainer = Swal.getPopup();
+          swalContainer.style.width = "max-content";
+          swalContainer.style.padding = "2%";
           toast.addEventListener("mouseenter", Swal.stopTimer);
           toast.addEventListener("mouseleave", Swal.resumeTimer);
         },
@@ -41,6 +44,9 @@ export const CartProvider = ({ children }) => {
         timer: 2000,
         timerProgressBar: true,
         didOpen: (toast) => {
+          const swalContainer = Swal.getPopup();
+          swalContainer.style.width = "max-content";
+          swalContainer.style.padding = "2%";
           toast.addEventListener("mouseenter", Swal.stopTimer);
           toast.addEventListener("mouseleave", Swal.resumeTimer);
         },

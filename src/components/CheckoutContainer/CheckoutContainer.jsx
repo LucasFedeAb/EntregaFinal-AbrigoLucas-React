@@ -10,6 +10,7 @@ import {
 import { useCart } from "../../Hooks/useCart";
 import { db } from "../../../services/firebase/firebaseConfig";
 import Swal from "sweetalert2";
+import "sweetalert2/dist/sweetalert2.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Loading from "../Loading/Loading";
@@ -40,7 +41,6 @@ const CheckOutContainer = () => {
     let fechaActual = new Date();
     let horaActual = fechaActual.toLocaleTimeString();
 
-    console.log(horaActual);
     const {
       firstName,
       lastName,
@@ -118,7 +118,6 @@ const CheckOutContainer = () => {
           <p>Fecha de compra: <strong>${formattedDate}</strong>  - Hora: <strong>${horaActual}</strong></p>
           <h6>GRACIAS ${firstName.toUpperCase()} POR TU COMPRA !!</h6>
           `,
-
           confirmButtonText: "OK",
           confirmButtonColor: "green",
         });
@@ -136,6 +135,9 @@ const CheckOutContainer = () => {
           timer: 1500,
           timerProgressBar: true,
           didOpen: (toast) => {
+            const swalContainer = Swal.getPopup();
+            swalContainer.style.width = "max-content";
+            swalContainer.style.padding = "2%";
             toast.addEventListener("mouseenter", Swal.stopTimer);
             toast.addEventListener("mouseleave", Swal.resumeTimer);
           },
@@ -154,6 +156,9 @@ const CheckOutContainer = () => {
         timer: 1500,
         timerProgressBar: true,
         didOpen: (toast) => {
+          const swalContainer = Swal.getPopup();
+          swalContainer.style.width = "max-content";
+          swalContainer.style.padding = "2%";
           toast.addEventListener("mouseenter", Swal.stopTimer);
           toast.addEventListener("mouseleave", Swal.resumeTimer);
         },
@@ -182,7 +187,7 @@ const CheckOutContainer = () => {
       ? createOrder(formData)
       : Swal.fire({
           icon: "error",
-          title: `Los mails no cinciden.`,
+          title: `Los mails no coinciden`,
           showConfirmButton: false,
         });
   };

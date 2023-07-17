@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { getDoc, doc } from "firebase/firestore";
 import { db } from "../../../services/firebase/firebaseConfig";
+import { getProducts } from "../../../services/firebase/firebase/products";
+import { useAsync } from "../../Hooks/useAsync";
 import PageTitle from "../PageTitle/PageTitle";
 import ItemDetail from "../ItemDetail/ItemDetail";
 import Loading from "../Loading/Loading";
@@ -9,7 +11,6 @@ import Loading from "../Loading/Loading";
 const ItemDetailContainer = () => {
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState();
-  const [productNotFound, setProductNotFound] = useState(false);
 
   const { itemId } = useParams();
   const navigate = useNavigate();
@@ -20,18 +21,11 @@ const ItemDetailContainer = () => {
 
     getDoc(productRef)
       .then((querySnapshot) => {
-        if (querySnapshot.size === 0) {
-          throw new Error("Error 404: not found");
-        }
-        if (querySnapshot.exists()) {
-          const fields = querySnapshot.data();
-          const productAdapted = { id: querySnapshot.id, ...fields };
-          setProduct(productAdapted);
+        const fields = querySnapshot.data();
+        const productAdapted = { id: querySnapshot.id, ...fields };
+        setProduct(productAdapted);
 
-          localStorage.setItem("currentId", itemId);
-        } else {
-          setProductNotFound(true);
-        }
+        localStorage.setItem("currentId", itemId);
       })
       .catch((error) => {
         return error;
@@ -41,9 +35,13 @@ const ItemDetailContainer = () => {
       });
   }, [itemId]);
 
-  if (productNotFound) {
-    return navigate("/*");
+  const getProductsDb = () => getProducts();
+  const { data: products } = useAsync(getProductsDb, []);
+
+  if (itemId != products.id) {
+    return navigate("*");
   }
+
   return (
     <div>
       {loading ? (
