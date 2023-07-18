@@ -43,7 +43,7 @@ const Hero = ({ images }) => {
           </div>
           <div className={`col-lg-4 d-flex justify-content-center `}>
             <img
-              className={`${style.heroImg}`}
+              className={`ps-4 ${style.heroImg}`}
               src="https://i.ibb.co/2KYsMxJ/hero.png"
               alt="hero"
             />

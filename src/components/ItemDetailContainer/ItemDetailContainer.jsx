@@ -39,35 +39,18 @@ const ItemDetailContainer = () => {
     getProductById(itemId);
   }, [itemId]);
 
-  useEffect(() => {
-    const handleBeforeUnload = (event) => {
-      // Evitar la recarga personalizada cuando se hace clic en el botón de recarga
-      if (!event.currentTarget.performance.navigation.type) {
-        localStorage.removeItem("currentId");
-      }
-    };
-
-    // Agregar el listener al evento beforeunload cuando el componente monta
-    window.addEventListener("beforeunload", handleBeforeUnload);
-
-    // Remover el listener cuando el componente desmonta para evitar pérdida de memoria
-    return () => {
-      window.removeEventListener("beforeunload", handleBeforeUnload);
-    };
-  }, []);
-
   return (
     <>
-      <div>
-        <PageTitle title={"Wexis | Detalle de producto"} />
+      <section>
         {loading ? (
-          <Loading />
-        ) : product ? (
-          <ItemDetail {...product} />
+          <div>
+            <PageTitle title={"Wexis | Detalle de producto"} />
+            <Loading />
+          </div>
         ) : (
-          <Error404 />
+          <ItemDetail {...product} />
         )}
-      </div>
+      </section>
     </>
   );
 };
