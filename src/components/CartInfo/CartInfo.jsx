@@ -7,19 +7,17 @@ import truckIcon from "./assets/truck.svg";
 import { useEffect } from "react";
 
 const CartInfo = () => {
-  const { totalQuantity, totalPrice, cart, clearCart } = useCart();
+  const {
+    totalQuantity,
+    totalPrice,
+    newTotalPrice,
+    shipment,
+    freeShipment,
+    cart,
+    clearCart,
+  } = useCart();
 
   let itemId = localStorage.getItem("currentId");
-
-  //Calcular precio final con envío
-  const shipment = 500;
-  const freeShipment = 8000;
-  let newTotalPrice = totalPrice;
-  {
-    totalPrice < freeShipment
-      ? (newTotalPrice = newTotalPrice + shipment)
-      : newTotalPrice;
-  }
 
   useEffect(() => {
     // Cuando el componente se monta, llevar al usuario al inicio del detalle del producto
@@ -37,7 +35,7 @@ const CartInfo = () => {
               return <CartItem key={item.id} {...item} />;
             })}
           </div>
-          {totalPrice >= 8000 ? (
+          {totalPrice >= freeShipment ? (
             <>
               <div className="d-flex flex-row justify-content-center p-3 ">
                 <img className="me-2 mb-2" src={truckIcon} alt="truck" />
@@ -48,7 +46,7 @@ const CartInfo = () => {
             <>
               <div className="d-flex flex-row justify-content-center p-3 ">
                 <img className="me-2 mb-2" src={truckIcon} alt="truck" />
-                <h6 className="text-center"> Costo de envío: $500</h6>
+                <h6 className="text-center"> Costo de envío: ${shipment}</h6>
               </div>
             </>
           )}

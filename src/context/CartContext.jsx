@@ -125,6 +125,16 @@ export const CartProvider = ({ children }) => {
   let totalPrice = getTotalPrice();
   const clearCart = () => setCart([]);
 
+  //Calcular precio final con envío
+  const shipment = 500;
+  const freeShipment = 8000;
+  let newTotalPrice = totalPrice;
+  {
+    totalPrice < freeShipment
+      ? (newTotalPrice = newTotalPrice + shipment)
+      : newTotalPrice;
+  }
+
   /*  const updateItemQuantity = (id, newQuantity) => {
     setCart((prev) =>
       prev.map((item) =>
@@ -146,6 +156,9 @@ export const CartProvider = ({ children }) => {
         isInCart,
         totalQuantity,
         totalPrice,
+        newTotalPrice,
+        shipment,
+        freeShipment,
         clearCart,
         updateItemQuantity,
       }}

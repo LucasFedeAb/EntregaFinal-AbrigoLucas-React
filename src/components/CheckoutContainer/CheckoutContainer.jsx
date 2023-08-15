@@ -30,7 +30,8 @@ const CheckOutContainer = () => {
     phone: "",
   });
 
-  const { cart, totalPrice, clearCart, totalQuantity } = useCart();
+  const { cart, totalPrice, newTotalPrice, clearCart, totalQuantity } =
+    useCart();
 
   const navigate = useNavigate();
 
@@ -68,6 +69,7 @@ const CheckOutContainer = () => {
       },
       items: cart,
       totalPrice,
+      newTotalPrice,
       totalQuantity,
       createdAt: formattedDate,
       horaActual,
@@ -119,7 +121,7 @@ const CheckOutContainer = () => {
           <h3>Se genero con éxito.</h3>
           <br/>
           <h5>Resumen de compra</h5>
-          <p>Total compra: <strong>$${totalPrice}</strong></p>
+          <p>Total compra: <strong>$${newTotalPrice}</strong></p>
           <p> ${textQuantity}</p>
           <p>Fecha de compra: <strong>${formattedDate}</strong>  - Hora: <strong>${horaActual}</strong></p>
           <h6>GRACIAS ${firstName.toUpperCase()} POR TU COMPRA !!</h6>
