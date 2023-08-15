@@ -21,7 +21,7 @@ $ npm run dev
 
 ## Link a Deploy en vercel
 
-[Watch-store](https://entrega-final-abrigo-lucas-react-qfaf-g38j1sbpe-lucasfedeab.vercel.app/)
+[Watch-store](https://entrega-final-abrigo-lucas-react.vercel.app/)
 
 ### Preview
 
@@ -32,5 +32,3 @@ $ npm run dev
 ![preview img](https://i.ibb.co/0Y5L2vt/readme3.jpg)
 
 ![preview img](https://i.ibb.co/8BVFgnH/readme4.jpg)
-
-

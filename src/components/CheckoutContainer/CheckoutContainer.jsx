@@ -107,14 +107,20 @@ const CheckOutContainer = () => {
         const ordersRef = collection(db, "orders");
 
         const { id } = await addDoc(ordersRef, objOrder);
+        let textQuantity =
+          totalQuantity > 1
+            ? `${totalQuantity} productos`
+            : `${totalQuantity} producto`;
 
         Swal.fire({
-          title: `La order N° ${id} se genero con éxito.`,
           icon: "success",
           html: `
+          <h3>La order N° ${id}</h3>
+          <h3>Se genero con éxito.</h3>
+          <br/>
           <h5>Resumen de compra</h5>
           <p>Total compra: <strong>$${totalPrice}</strong></p>
-          <p> ${totalQuantity} producto/s</p>
+          <p> ${textQuantity}</p>
           <p>Fecha de compra: <strong>${formattedDate}</strong>  - Hora: <strong>${horaActual}</strong></p>
           <h6>GRACIAS ${firstName.toUpperCase()} POR TU COMPRA !!</h6>
           `,

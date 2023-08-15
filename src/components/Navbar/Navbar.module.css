@@ -1,17 +1,17 @@
 .heigth {
   width: 100%;
-  height: 60px;
+  height: 80px;
 }
 
 .offcanvas {
-  --bs-offcanvas-width: 60% !important;
-  max-width: 400px;
+  /* --bs-offcanvas-width: 60% !important; */
+  max-width: 200px;
 }
 
 .logo {
   border-radius: 50%;
   width: 68px;
-  height: 55px;
+  height: 56px;
 }
 
 .expand:hover {
@@ -21,6 +21,10 @@
 
 .dark {
   --bs-navbar-color: transparent !important;
+}
+
+.cursor__default {
+  cursor: default;
 }
 
 .toggler {
@@ -34,6 +38,11 @@
   }
   .logo {
     width: 100px;
-    height: 80px;
+    height: 70px;
+  }
+
+  .heigth {
+    width: 100%;
+    height: 90px;
   }
 }

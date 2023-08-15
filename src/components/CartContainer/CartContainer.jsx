@@ -3,7 +3,6 @@ import CartInfo from "../CartInfo/CartInfo";
 import { Link } from "react-router-dom";
 import ButtonCard from "../Buttons/ButtonCard";
 import PageTitle from "../PageTitle/PageTitle";
-import icon from "./assets/return.svg";
 
 const CartContainer = () => {
   const { cart } = useCart();
@@ -16,11 +15,17 @@ const CartContainer = () => {
           <CartInfo cart={cart} />
         ) : (
           <div className="vh-100 d-flex flex-column justify-content-center align-items-center ">
-            <p className="fs-5 fw-bold">CARRITO VACIO</p>
-            <Link to={`/`}>
+            <div className="p-3">
+              <h3 className="text-center p-3">
+                ¡Empieza un carrito de compras!
+              </h3>
+              <h5 className="text-center pt-2 text-secondary">
+                Suma productos y conseguí envio gratis.
+              </h5>
+            </div>
+            <Link to="/">
               <ButtonCard
-                icon={<img className="me-2" src={icon} alt="return" />}
-                label={"Volver al inicio"}
+                label={"Descubrir productos"}
                 textColor="light"
                 bg="dark"
               ></ButtonCard>

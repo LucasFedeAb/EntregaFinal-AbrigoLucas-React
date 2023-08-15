@@ -3,8 +3,10 @@ import { useLocation } from "react-router-dom";
 import { getDocs, collection } from "firebase/firestore";
 import { db } from "../../../services/firebase/firebaseConfig.js";
 import Navbar from "../Navbar/Navbar.jsx";
+/* import TogglerCart from "../TogglerCart/TogglerCart.jsx"; */
 
 const NavbarContainer = () => {
+  const [dropdownResponsiveOpen, setDropdownResponsiveOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [categories, setCategories] = useState([]);
   const location = useLocation();
@@ -17,6 +19,14 @@ const NavbarContainer = () => {
       setShowHomeNavbar(true);
     }
   }, [location]);
+
+  const handleMouseResponsiveEnter = () => {
+    setDropdownResponsiveOpen(true);
+  };
+
+  const handleMouseResponsiveLeave = () => {
+    setDropdownResponsiveOpen(false);
+  };
 
   const handleMouseEnter = () => {
     setDropdownOpen(true);
@@ -47,9 +57,12 @@ const NavbarContainer = () => {
     <>
       <Navbar
         dropdownOpen={dropdownOpen}
-        categories={categories}
         handleMouseEnter={handleMouseEnter}
         handleMouseLeave={handleMouseLeave}
+        dropdownResponsiveOpen={dropdownResponsiveOpen}
+        handleMouseResponsiveEnter={handleMouseResponsiveEnter}
+        handleMouseResponsiveLeave={handleMouseResponsiveLeave}
+        categories={categories}
         showHomeNavbar={showHomeNavbar}
       />
     </>

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styles from "./SliderHero.module.css";
 
 const SliderHero = ({ images }) => {
@@ -8,40 +9,44 @@ const SliderHero = ({ images }) => {
       data-bs-ride="carousel"
     >
       <div className={`carousel-inner`}>
-        {images.map((img, index) => (
+        {images.map((product, index) => (
           <div
             className={`carousel-item ${index === 0 ? "active" : ""}`}
             key={index}
           >
-            <img
-              src={img}
-              className={`d-block w-100 rounded-pill rounded-bottom-0 p-5  bg-dark  ${styles.img}`}
-              alt={`HERO${index}`}
-            />
+            <Link to={`/Producto/${product.id}`}>
+              <img
+                src={product.img}
+                className={`d-block w-100 rounded-pill rounded-bottom-0 p-5 bg-dark ${styles.img}`}
+                alt={`HERO${index}`}
+              />
+            </Link>
             <div className="border-bottom border-secondary border-1 pb-2"></div>
-            <img
-              src={
-                index === images.length - 1
-                  ? images[index - 1]
-                  : images[index + 1]
-              }
-              className={`d-block w-100 rounded-pill rounded-top-0 p-5 bg-dark    ${styles.img}`}
-              alt="Hero"
-            />
+            <Link to={`/Producto/${images[(index + 1) % images.length].id}`}>
+              <img
+                src={images[(index + 1) % images.length].img}
+                className={`d-block w-100 rounded-pill rounded-top-0 p-5 bg-dark ${styles.img}`}
+                alt="Hero"
+              />
+            </Link>
           </div>
         ))}
       </div>
       <div>
         <button
-          className={`${styles.controls} carousel-control-prev `}
+          className={`${styles.controls} carousel-control-prev`}
           type="button"
           data-bs-target="#carouselExampleAutoplaying"
           data-bs-slide="prev"
         >
           <span
             className="carousel-control-prev-icon position-absolute"
-            style={{ top: "0", left: "7rem", transform: "rotate(90deg)" }}
-            aria-hidden="true"
+            style={{
+              top: "0",
+              left: "7rem",
+              transform: "rotate(90deg)",
+            }}
+            aria-hidden="false"
           />
           <span className="visually-hidden">Previous</span>
         </button>
@@ -52,7 +57,7 @@ const SliderHero = ({ images }) => {
           data-bs-slide="next"
         >
           <span
-            className="carousel-control-next-icon position-absolute"
+            className="carousel-control-next-icon position-absolute "
             style={{
               bottom: "0",
               right: "7rem",

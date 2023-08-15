@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styles from "./Story.module.css";
 
 const Story = () => {
@@ -22,17 +23,18 @@ const Story = () => {
               llevado al éxito. Únete a nuestra historia y encuentra el reloj
               perfecto para cada ocasión en nuestra tienda.
             </p>
-            <a href="#" className={` btn btn-dark `}>
-              Discover
-            </a>
+            <Link to={`/Producto/gdbfvXVqjF3nYTlrwEw1`}>
+              <div className={` btn btn-dark `}>Descubrir</div>
+            </Link>
           </div>
           <div className={`${styles.story__images} `}>
             <img
               src="https://i.ibb.co/z6dxcMQ/story.png"
-              alt=""
+              alt="imgStory"
               className={`${styles.story__img} `}
             />
-            <div className={`${styles.story__square} `} />
+
+            <div className={` ${styles.story__square} `} />
           </div>
         </div>
       </section>

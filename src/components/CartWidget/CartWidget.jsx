@@ -5,8 +5,8 @@ const CartWidget = () => {
   const { totalQuantity } = useCart();
 
   return (
-    <div>
-      <button className="btn position-relative  me-2">
+    <div className="d-flex align-items-center ">
+      <span className="btn position-relative me-2">
         <img
           className="position-absolute top-0 start-0 ps-1 w-100"
           src={cart}
@@ -17,7 +17,7 @@ const CartWidget = () => {
             {totalQuantity}
           </span>
         )}
-      </button>
+      </span>
     </div>
   );
 };

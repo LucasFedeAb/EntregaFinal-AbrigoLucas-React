@@ -1,3 +1,7 @@
+import { Link } from "react-router-dom";
+import ButtonCard from "../Buttons/ButtonCard";
+import icon from "./assets/return.svg";
+
 const CheckOut = ({
   createOrder,
   formData,
@@ -17,8 +21,21 @@ const CheckOut = ({
   } = formData;
   return (
     <>
+      <div className="p-2">
+        <div>
+          <Link to={`/cart`} className="">
+            <ButtonCard
+              icon={<img className="me-2" src={icon} alt="return" />}
+              label={"Volver"}
+              textColor="light"
+              bg="dark"
+            ></ButtonCard>
+          </Link>
+        </div>
+      </div>
       <article className="d-flex flex-column justify-content-center align-items-center p-5">
-        <h1 className="p-5">GENERAR ORDEN DE COMPRA</h1>
+        <h1 className="text-center">GENERAR ORDEN DE COMPRA</h1>
+
         <form className="row g-3 needs-validation" onSubmit={handleFormSubmit}>
           <div className="col-md-6">
             <label htmlFor="firstName" className="form-label">
@@ -134,11 +151,31 @@ const CheckOut = ({
             >
               <option value="">Seleccione una provincia</option>
               <option value="Buenos Aires">Buenos Aires</option>
-              <option value="Córdoba">Córdoba</option>
+              <option value="Ciudad Autónoma de Buenos Aires">
+                Ciudad Autónoma de Buenos Aires
+              </option>
+              <option value="Catamarca">Catamarca</option>
               <option value="Chaco">Chaco</option>
               <option value="Chubut">Chubut</option>
+              <option value="Córdoba">Córdoba</option>
+              <option value="Corrientes">Corrientes</option>
+              <option value="Entre Ríos">Entre Ríos</option>
               <option value="Formosa">Formosa</option>
+              <option value="Jujuy">Jujuy</option>
+              <option value="La Pampa">La Pampa</option>
+              <option value="La Rioja">La Rioja</option>
               <option value="Mendoza">Mendoza</option>
+              <option value="Misiones">Misiones</option>
+              <option value="Neuquén">Neuquén</option>
+              <option value="Río Negro">Río Negro</option>
+              <option value="Salta">Salta</option>
+              <option value="San Juan">San Juan</option>
+              <option value="San Luis">San Luis</option>
+              <option value="Santa Cruz">Santa Cruz</option>
+              <option value="Santa Fe">Santa Fe</option>
+              <option value="Santiago del Estero">Santiago del Estero</option>
+              <option value="Tierra del Fuego">Tierra del Fuego</option>
+              <option value="Tucumán">Tucumán</option>
             </select>
             <div className="invalid-feedback">
               Por favor seleccione una provincia.
@@ -171,11 +208,13 @@ const CheckOut = ({
               id="phone"
               name="phone"
               value={phone}
+              pattern="[0-9]{7,}"
               onChange={handleInputChange}
               required
             />
             <div className="invalid-feedback">
-              Por favor ingrese su numero de telefono.
+              Por favor ingrese su numero de telefono, debe contener mas de 6
+              digitos.
             </div>
           </div>
 
