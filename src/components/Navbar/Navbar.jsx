@@ -1,10 +1,8 @@
 import { Link } from "react-router-dom";
 import CartWidget from "../CartWidget/CartWidget.jsx";
 import styles from "./Navbar.module.css";
-/* import TogglerCart from "../TogglerCart/TogglerCart.jsx"; */
 import CartToggler from "../CartToggler/CartToggler.jsx";
 import truck from "./assets/truck.svg";
-/* import CartInfo from "../CartInfo/CartInfo.jsx"; */
 
 const Navbar = ({
   dropdownOpen,
@@ -161,10 +159,6 @@ const Navbar = ({
             </div>
 
             <div className={`d-flex align-items-center `}>
-              {/* TogglerCart */}
-              {/* <nav
-              className={`navbar navbar-expand-none ${styles.heigth} ${styles.dark}`}
-            > */}
               <div>
                 <div
                   className={`offcanvas offcanvas-expand-none bg-black ${styles.offcanvas}  offcanvas-end`}
@@ -205,10 +199,6 @@ const Navbar = ({
                   </button>
                 </div>
               </div>
-              {/* </nav> */}
-              {/* <Link to={"/cart"}>
-              <CartWidget />
-            </Link> */}
 
               <button
                 className="navbar-toggler ms-2 d-md-none"

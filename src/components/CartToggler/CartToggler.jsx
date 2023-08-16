@@ -1,6 +1,5 @@
 import { useCart } from "../../Hooks/useCart";
 import CartTogglerItem from "../CartTogglerItem/CartTogglerItem";
-/* import CartItem from "../CartItem/CartItem"; */
 import styles from "./CartToggler.module.css";
 import { Link, useNavigate } from "react-router-dom";
 import ButtonCard from "../Buttons/ButtonCard";

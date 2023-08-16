@@ -2,8 +2,6 @@ import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { getDoc, doc } from "firebase/firestore";
 import { db } from "../../../services/firebase/firebaseConfig";
-/* import { getProducts } from "../../../services/firebase/firebase/products";
-import { useAsync } from "../../Hooks/useAsync"; */
 import PageTitle from "../PageTitle/PageTitle";
 import ItemDetail from "../ItemDetail/ItemDetail";
 import Loading from "../Loading/Loading";

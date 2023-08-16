@@ -11,53 +11,6 @@ export const CartProvider = ({ children }) => {
 
   //Agregar producto a carrito
   const addItem = (productToAdd) => {
-    /* if (!isInCart(productToAdd.id)) {
-      setCart((prev) => {
-        return [...prev, productToAdd];
-      });
-
-      const Toast = Swal.mixin({
-        toast: true,
-        position: "top-end",
-        background: "#d4edda;",
-        showConfirmButton: false,
-        timer: 1500,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-          const swalContainer = Swal.getPopup();
-          swalContainer.style.width = "max-content";
-          swalContainer.style.padding = "2%";
-          toast.addEventListener("mouseenter", Swal.stopTimer);
-          toast.addEventListener("mouseleave", Swal.resumeTimer);
-        },
-      });
-
-      Toast.fire({
-        icon: "success",
-        title: "<span style='color: #155724;'>Agregado al carrito</span>",
-      });
-    } else {
-      const Toast = Swal.mixin({
-        toast: true,
-        background: "#f8d7da",
-        position: "top-end",
-        showConfirmButton: false,
-        timer: 2000,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-          const swalContainer = Swal.getPopup();
-          swalContainer.style.width = "max-content";
-          swalContainer.style.padding = "2%";
-          toast.addEventListener("mouseenter", Swal.stopTimer);
-          toast.addEventListener("mouseleave", Swal.resumeTimer);
-        },
-      });
-
-      Toast.fire({
-        icon: "error",
-        title: "<span style='color: #721c24;'>Ya se encuentra agregado</span>",
-      });
-    } */
     deleteItem(productToAdd.id);
     setCart((prev) => {
       return [...prev, productToAdd];
@@ -134,14 +87,6 @@ export const CartProvider = ({ children }) => {
       ? (newTotalPrice = newTotalPrice + shipment)
       : newTotalPrice;
   }
-
-  /*  const updateItemQuantity = (id, newQuantity) => {
-    setCart((prev) =>
-      prev.map((item) =>
-        item.id === id ? { ...item, quantity: newQuantity } : item
-      )
-    );
-  }; */
 
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));

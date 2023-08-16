@@ -26,7 +26,6 @@ const ItemListContainer = ({ title }) => {
     section,
   ]);
 
-  /* const orderedProducts = products.tosorted() */
   useEffect(() => {
     const fetchData = async () => {
       const products = await getProducts(categoryId);
@@ -46,14 +45,6 @@ const ItemListContainer = ({ title }) => {
           img: product.img,
         }))
       : [];
-
-  /* const images =
-      featuredProducts && featuredProducts.length > 0
-        ? featuredProducts.map((product) => ({
-            id: product.id,
-            img: product.img,
-          }))
-        : []; */
 
   useEffect(() => {
     // Cuando el componente se monta, llevar al usuario al inicio del detalle del producto

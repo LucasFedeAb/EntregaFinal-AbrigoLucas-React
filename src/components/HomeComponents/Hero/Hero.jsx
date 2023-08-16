@@ -6,7 +6,7 @@ const Hero = ({ images }) => {
   return (
     <>
       <section
-        className={`container-fluid align-items-center bg-black text-light pb-3`}
+        className={`container-fluid align-items-center bg-black text-light`}
       >
         <div
           className={`row flex-column-reverse flex-lg-row align-items-center container-fluid`}

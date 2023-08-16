@@ -19,12 +19,9 @@ const CartTogglerItem = ({ id, img, name, price, stock, quantity }) => {
           <span className={`${styles.cart__price}`}>${quantity * price}</span>
           <div className={`${styles.cart__amount}`}>
             <div className={`${styles.cart__amount__content}`}>
-              {/* <ItemCount stock={stock} onAdd={addItem} /> */}
-              {/* <span className={`${styles.cart__amount__box}`}>-</span> */}
               <span className={`${styles.cart__amount__number}`}>
                 {quantity} {quantity > 1 ? "unidades" : "unidad"}
               </span>
-              {/* <span className={`${styles.cart__amount__box}`}>+</span> */}
             </div>
             <button
               className="border-none btn bg-dark h-25 ms-4 ms-md-5 py-1 mt-1 pointer"
@@ -34,8 +31,6 @@ const CartTogglerItem = ({ id, img, name, price, stock, quantity }) => {
             >
               <img src={trashIcon} alt="trash" />
             </button>
-
-            {/* <img src={trashIcon} alt="trash" className="bg-dark" /> */}
           </div>
         </div>
       </article>

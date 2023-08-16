@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { useCart } from "../../Hooks/useCart";
-/* import ItemCount from "../ItemCount/ItemCount"; */
 import trashIcon from "./assets/trash-fill.svg";
 
 const CartItem = ({ id, img, name, quantity, price, stock, category }) => {
@@ -31,7 +30,7 @@ const CartItem = ({ id, img, name, quantity, price, stock, category }) => {
             <h6 className="">Subtotal</h6>
             <h6>${quantity * price} </h6>
           </div>
-          {/* <ItemCount stock={stock} onAdd={quantity} /> */}
+
           <button
             className="border-none btn bg-dark color-light h-25 ms-3 py-1 mt-3"
             onClick={() => {
