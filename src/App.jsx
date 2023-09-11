@@ -8,10 +8,12 @@ import CartContainer from "./components/CartContainer/CartContainer.jsx";
 import CheckOutContainer from "./components/CheckoutContainer/CheckoutContainer.jsx";
 import NavbarContainer from "./components/NavbarContainer/NavbarContainer.jsx";
 import Error404 from "./components/Error404/Error404.jsx";
+import RecordVisits from "../services/firebase/firebase/RecordVisits";
 
 function App() {
   return (
     <>
+      <RecordVisits />
       <BrowserRouter>
         <CartProvider>
           <NavbarContainer />

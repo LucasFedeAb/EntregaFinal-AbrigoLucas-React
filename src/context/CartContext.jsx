@@ -18,7 +18,7 @@ export const CartProvider = ({ children }) => {
 
     const Toast = Swal.mixin({
       toast: true,
-      position: "top-end",
+      position: "bottom-end",
       background: "#d4edda;",
       showConfirmButton: false,
       timer: 1500,
